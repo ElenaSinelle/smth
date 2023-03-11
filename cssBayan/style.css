@@ -21,8 +21,8 @@
     --main-font: normal 2rem/2.2rem Merienda;
     --tablet-font: normal 1.7rem/1.8rem Merienda;
     --mobile-font: normal 1.2rem/1.3rem Merienda;
-    --main-text-color: #5c3a3a;
-    --highlited-text-color: #ad3a3a;
+    --main-text-color: #422a2a;
+    --highlited-text-color: #238091;
     --main-bg-color: #f5e9e9;
     --border-color: #c46b6b;
     --light-border-color: #e6b3b3;
@@ -66,20 +66,6 @@ body {
     color: var(--highlited-text-color);
 }
 
-.main:hover {
-    cursor: pointer;
-}
-
-a {
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 1s linear;
-}
-
-a:visited {
-    color: var(--main-text-color);
-}
-
 .bayan-item {
     padding-top: 0.5em;
     padding-bottom: 1em;
@@ -88,14 +74,28 @@ a:visited {
     flex-direction: column;
 }
 
-.item-title {
+.main:hover,
+.main:hover label {
+    cursor: pointer;
+}
+
+.main:hover p {
+    color: var(--main-text-color);
+}
+
+.label-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.main:hover .item-title p {
-    color: var(--main-text-color);
+.radio-circle {
+    opacity: 0;
 }
 
 .arrow {
@@ -114,7 +114,7 @@ a:visited {
 }
 
 .mem {
-    width: 0em;
+    width: 0em;;
     height: 0em;
     align-self: center;
     background-size: cover;
@@ -149,12 +149,42 @@ a:visited {
     background-image: url(assets/img/gif/5-relax-takteasy.gif);
 }
 
+input:active ~ .input-title > p {
+    color: var(--highlited-text-color);
+}
+
+input:checked ~ .input-title > p {
+    color: var(--main-text-color);
+}
+
+input:checked ~ .mem {
+    width: 20em;
+    height: 10em;
+    border: 0.1em solid var(--light-border-color);
+    border-radius: 0.5em;
+}
+
+input:checked ~ .input-title > .arrow {
+    display: block;
+    transform: rotate(180deg);
+}
+
 .footer {
     font: var(--tablet-font);
     padding-top: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 1s linear;
+}
+
+a:visited {
+    color: var(--main-text-color);
 }
 
 .rs-logo {
@@ -169,12 +199,13 @@ a:visited {
 */
 
 
-/*
-@media (max-width: 1100px) {
 
+@media (max-width: 820px) {
+    .main:hover {
+        cursor: unset;
+    }
 }
 
 @media (max-width: 320px) {
 
 }
-*/
